@@ -15,7 +15,6 @@ import {
     Navigator
 } from 'react-native';
 
-
 import FirstPageComponent from './jjjss/FirstPageComponent';
 
 var Myproject = React.createClass({

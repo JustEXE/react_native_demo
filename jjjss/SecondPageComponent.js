@@ -5,9 +5,16 @@ import {
     TouchableOpacity,
     ListView,
     ToastAndroid,
+    StyleSheet,
 } from 'react-native';
 
 import FirstPageComponent from './FirstPageComponent';
+
+var styles = StyleSheet.create({
+    list:{
+        paddingTop:50,
+    },
+})
 
 export default class SecondPageComponent extends React.Component {
     constructor(props) {
@@ -69,6 +76,7 @@ export default class SecondPageComponent extends React.Component {
                     <Text>{this.state.message}</Text>
                 </TouchableOpacity>
                 <ListView
+                    style={styles.list}
                     dataSource={this.state.dataSource}
                     renderRow={this._renderRow.bind(this)}
                 />
