@@ -8,11 +8,17 @@ import {
     StyleSheet,
 } from 'react-native';
 
-import FirstPageComponent from './FirstPageComponent';
-
 var styles = StyleSheet.create({
-    list:{
-        paddingTop:50,
+    list: {
+        marginTop: 30,
+        marginBottom: 50,
+        marginLeft: 50,
+    },
+    title: {
+        height:40,
+        textAlign:'center',
+        textAlignVertical:'center',
+        marginTop: 20,
     },
 })
 
@@ -73,7 +79,10 @@ export default class SecondPageComponent extends React.Component {
         return (
             <View>
                 <TouchableOpacity onPress={this._pressButton.bind(this)}>
-                    <Text>{this.state.message}</Text>
+                    <Text
+                        style={styles.title}>
+                        {this.state.message}
+                    </Text>
                 </TouchableOpacity>
                 <ListView
                     style={styles.list}

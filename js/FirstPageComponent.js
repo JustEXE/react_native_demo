@@ -6,31 +6,42 @@ import React, {Component} from 'react';
 import {
     View,
     Text,
-    TouchableOpacity
+    TouchableOpacity,
+    StyleSheet,
 } from 'react-native';
 
 import SecondPageComonent from "./SecondPageComponent";
 
-export default class FirstPageComponent extends React.Component{
-    constructor(props){
+var styles = StyleSheet.create({
+    hello: {
+        height:40,
+        marginTop:20,
+        textAlign: 'center',
+        textAlignVertical:'center',
+        fontSize:18,
+    }
+})
+
+export default class FirstPageComponent extends React.Component {
+    constructor(props) {
         super(props);
         this.state = {
-            resultMessage:"hello",
+            resultMessage: "hello",
         };
     }
 
-    _pressButtoon(){
+    _pressButtoon() {
         var _this = this;
-        const { navigator} = this.props;
+        const {navigator} = this.props;
         if (navigator) {
             navigator.push({
-                name:'SecondPageComonent',
-                component:SecondPageComonent,
-                params:{
-                    message:"I am from FirstPageComponent",
-                    getResult:function(myMessage){
+                name: 'SecondPageComonent',
+                component: SecondPageComonent,
+                params: {
+                    message: "I am from FirstPageComponent",
+                    getResult: function (myMessage) {
                         _this.setState({
-                            resultMessage:myMessage,
+                            resultMessage: myMessage,
                         })
                     }
                 }
@@ -38,11 +49,26 @@ export default class FirstPageComponent extends React.Component{
         }
     }
 
-    render(){
+    _back(){
+        const {navigator} = this.props;
+        if (navigator) {
+            navigator.pop();
+        }
+    }
+
+    render() {
         return (
             <View>
                 <TouchableOpacity onPress={this._pressButtoon.bind(this)}>
-                    <Text>{this.state.resultMessage}</Text>
+                    <Text
+                        style={styles.hello}>
+                        {this.state.resultMessage}
+                    </Text>
+                </TouchableOpacity>
+                <TouchableOpacity onPress={this._back.bind(this)}>
+                    <Text style={{fontSize: 20,marginTop:20,textAlign:'center',textAlignVertical:'center',}}>
+                        Back
+                    </Text>
                 </TouchableOpacity>
             </View>
         );
